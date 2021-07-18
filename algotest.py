@@ -16,7 +16,7 @@ sys.path.append(path1)
 import api_alpaca as api
 from config import *
 import trade_test as tt
-from mail import sendmail
+#from mail import sendmail
 import portfolio as po 
 from Strategie import strategie
 import numpy as np
@@ -133,7 +133,7 @@ def main(DELTA = 30):
                         
                         msg += str(response)
                         
-                    sendmail(msg,subject_)
+                    #sendmail(msg,subject_)
         
         print('\n Temps de trading restant \n', ((heure_limite - heure_actuelle),"Market closed")[((heure_limite - heure_actuelle) < timedelta(days = 0 , hours = 0, seconds = 0)) == True])
         

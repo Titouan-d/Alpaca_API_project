@@ -47,11 +47,30 @@ BARS_URL ="{}/v1/bars".format(DATA_URL)
 #API ACCESS
 
 def get_account():
+    """
+    Access the API    
+
+    Returns
+    -------
+    json of the request
+        
+
+    """
     r = requests.get(ACCOUNT_URL, headers = HEADERS)
     
     return json.loads(r.content)
 
 def get_position():
+    """
+    
+    Returns
+    -------
+    json 
+        Get the current position of our portfolio (access directly w/o portfolio class)
+
+    """
+    
+    
     r = requests.get(POSITION_URL, headers = HEADERS)
     
     return json.loads(r.content)
@@ -76,6 +95,27 @@ def get_clock():
 # On est sur le bon compte ok
 
 def create_order(symbol,qty,side,the_type,time_in_force):
+    
+    """
+    Do
+    ----------
+    Send an order to the API
+    
+    Parameters
+    ----------
+        symbol : String of the name of the desired stocks
+        qty : number of stocks in the order
+        the_type : At the market, limit,
+        time_in_force : time before deleting order
+    
+    Return 
+    ----------
+    
+    json
+        Representing the passed order
+    
+    """
+    
     data ={
         "symbol" : symbol,
         "qty" : qty,
@@ -104,6 +144,16 @@ def get_bars(timeframe,symbols,limit = 100):
     return json.loads(r.content)
     
 def save_data():
+    """
+    
+    Saves the asked data
+        Returns
+    -------
+    None.
+
+    """
+    
+    
     r = get_account()
     STOCK = "MOGO,KERN,TRVG,PXLW"
     DUREE = 1000
